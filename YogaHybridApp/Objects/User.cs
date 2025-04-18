@@ -28,13 +28,26 @@ namespace YogaHybridApp.Objects
 
         }
 
-        public Boolean AddClass(string classId) {
+        public bool AddClass(string classId)
+        {
+            if (string.IsNullOrEmpty(classId) || ClassesId.Contains(classId))
+                return false;
+
+            ClassesId = ClassesId.Concat(new[] { classId }).ToArray();
             return true;
         }
 
-        public Boolean RemoveClass(string classId) { return true; }
-    
+        public bool RemoveClass(string classId)
+        {
+            if (string.IsNullOrEmpty(classId) || !ClassesId.Contains(classId))
+                return false;
+
+            ClassesId = ClassesId.Where(id => id != classId).ToArray();
+            return true;
+        }
 
 
-	}
+
+
+    }
 }

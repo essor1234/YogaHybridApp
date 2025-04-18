@@ -26,14 +26,16 @@
                                 StrokeShape="RoundRectangle 10" 
                                 Padding="15" 
                                 BackgroundColor="#F9F9F9">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToClassDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                                     CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
                             <VerticalStackLayout Spacing="5">
-                                <!-- Teacher Name as Header -->
                                 <Label Text="{Binding TeacherName}" 
                                        FontSize="18" 
                                        FontAttributes="Bold" 
                                        TextColor="#333333" 
                                        HorizontalOptions="Center" />
-                                <!-- Date -->
                                 <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy HH:mm}'}" 
                                        FontSize="14" 
                                        TextColor="#555555" 

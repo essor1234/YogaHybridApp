@@ -11,7 +11,7 @@ namespace YogaHybridApp
             InitializeComponent();
 
             //MainPage = new NavigationPage(new AllClassPage());
-            MainPage = new NavigationPage(new AllCoursePage());
+            MainPage = new NavigationPage(new SignInPage());
 
 
         }

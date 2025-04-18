@@ -70,6 +70,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\ShoppingCartPage.xaml.cs">
+	    <DependentUpon>ShoppingCartPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\Account\SignInPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -91,7 +97,7 @@
 	  <MauiXaml Update="Views\Courses\CourseDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ShopingCartPage.xaml">
+	  <MauiXaml Update="Views\ShoppingCartPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

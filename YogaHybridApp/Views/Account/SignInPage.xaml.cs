@@ -1,3 +1,4 @@
+using Microsoft.Maui.Storage; // Add
 using YogaHybridApp.Database;
 using YogaHybridApp.Views.Class;
 using YogaHybridApp.Views.Courses;
@@ -6,19 +7,18 @@ namespace YogaHybridApp.Views.Account;
 
 public partial class SignInPage : ContentPage
 {
-	public DatabaseConnect _databaseConnect;
-	public SignInPage()
-	{
-		InitializeComponent();
-        _databaseConnect = new DatabaseConnect();
+    public DatabaseConnect _databaseConnect;
 
+    public SignInPage()
+    {
+        InitializeComponent();
+        _databaseConnect = new DatabaseConnect();
     }
 
     private async void OnSignInClicked(object sender, EventArgs e)
     {
         string email = EmailEntry.Text?.Trim();
 
-        // Basic validation
         if (string.IsNullOrEmpty(email))
         {
             await DisplayAlert("Error", "Please enter your email.", "OK");
@@ -31,7 +31,6 @@ public partial class SignInPage : ContentPage
             return;
         }
 
-        // Verify user in Firebase
         var user = await _databaseConnect.GetUserByEmailAsync(email);
         if (user == null)
         {
@@ -39,19 +38,15 @@ public partial class SignInPage : ContentPage
             return;
         }
 
-        //// Store user data if needed (e.g., for app-wide access)
-        //Application.Current.Properties["CurrentUserId"] = user.UserId;
-        //Application.Current.Properties["CurrentUserName"] = user.Name;
+        Preferences.Set("CurrentUserId", user.UserId); // Use Preferences
+        Preferences.Set("CurrentUserName", user.Name);
 
         await DisplayAlert("Success", $"Welcome back, {user.Name}!", "OK");
-
-        // Navigate to the main app page (replace with your actual main page)
         await Navigation.PushAsync(new AllCoursePage());
     }
 
     private async void OnSignUpTapped(object sender, EventArgs e)
     {
-        // Navigate to Sign-Up page
         await Navigation.PushAsync(new SignUpPage());
     }
 
@@ -67,5 +62,4 @@ public partial class SignInPage : ContentPage
             return false;
         }
     }
-
 }

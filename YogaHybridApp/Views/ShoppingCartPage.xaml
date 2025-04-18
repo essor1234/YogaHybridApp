@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YogaHybridApp.Views.Class.ShoppingCartPage"
+             Title="Shopping Cart">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Header -->
+            <Label Text="Your Cart" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#333333" 
+                   Margin="0,10" />
+
+            <!-- Course Section -->
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15" 
+                    BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Course Information" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#555555" />
+                    <Label Text="{Binding Course.Category, FallbackValue='Category: N/A'}" 
+                           FontSize="16" 
+                           TextColor="#333333" />
+                    <Label Text="{Binding Course.Description, StringFormat='Description: {0}', FallbackValue='Description: N/A'}" 
+                           FontSize="14" 
+                           TextColor="#555555" 
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Class Section -->
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15" 
+                    BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Class Information" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#555555" />
+                    <Label Text="{Binding ClassInstance.TeacherName, StringFormat='Teacher: {0}', FallbackValue='Teacher: Unknown'}" 
+                           FontSize="14" 
+                           TextColor="#333333" />
+                    <Label Text="{Binding ClassInstance.Date, StringFormat='Date: {0:MM/dd/yyyy HH:mm}'}" 
+                           FontSize="14" 
+                           TextColor="#333333" />
+                    <Label Text="{Binding ClassInstance.Comment, StringFormat='Comment: {0}', FallbackValue='Comment: None'}" 
+                           FontSize="14" 
+                           TextColor="#333333" 
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- User Section -->
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15" 
+                    BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="User Information" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#555555" />
+                    <Label Text="{Binding User.Name, StringFormat='Name: {0}', FallbackValue='Name: N/A'}" 
+                           FontSize="14" 
+                           TextColor="#333333" />
+                    <Label Text="{Binding User.Email, StringFormat='Email: {0}', FallbackValue='Email: N/A'}" 
+                           FontSize="14" 
+                           TextColor="#333333" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Buttons -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Fill" Margin="0,10">
+                <Button Text="Cancel" 
+                        Command="{Binding CancelCommand}" 
+                        BackgroundColor="#FF4444" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        CornerRadius="10" 
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand" />
+                <Button Text="Accept" 
+                        Command="{Binding AcceptCommand}" 
+                        BackgroundColor="#6200EA" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        CornerRadius="10" 
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="YogaHybridApp.Views.ClassDetailsPage"
-             Title="ClassDetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="YogaHybridApp.Views.Class.ClassDetailsPage"
+             Title="Class Details">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Header -->
+            <Label Text="Class Details" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#333333" 
+                   Margin="0,10" />
+            <Label Text="View the details of your selected class below." 
+                   FontSize="16" 
+                   TextColor="#555555" 
+                   HorizontalOptions="Center" 
+                   LineBreakMode="WordWrap" />
+
+            <!-- Class Information -->
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15" 
+                    BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding ClassInstance.TeacherName, StringFormat='Teacher: {0}'}" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#333333" />
+                    <Label Text="{Binding ClassInstance.Date, StringFormat='Date: {0:MM/dd/yyyy HH:mm}'}" 
+                           FontSize="16" 
+                           TextColor="#555555" />
+                    <Label Text="{Binding ClassInstance.Course.Category, StringFormat='Course: {0}', FallbackValue='Course: Unknown'}" 
+                           FontSize="16" 
+                           TextColor="#555555" />
+                    <Label Text="{Binding ClassInstance.Comment, StringFormat='Comment: {0}', FallbackValue='Comment: None'}" 
+                           FontSize="16" 
+                           TextColor="#555555" 
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Add to Cart Button -->
+            <Button Text="Add to Cart" 
+                    Command="{Binding AddToCartCommand}" 
+                    BackgroundColor="#6200EA" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    CornerRadius="10" 
+                    HeightRequest="50" 
+                    HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
