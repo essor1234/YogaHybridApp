@@ -2,6 +2,7 @@ namespace YogaHybridApp.Views.Course;
 
 using System.Windows.Input;
 using YogaHybridApp.Objects;
+using YogaHybridApp.Views.Class;
 
 public partial class CourseDetailPage : ContentPage
 {
@@ -13,12 +14,12 @@ public partial class CourseDetailPage : ContentPage
     {
         InitializeComponent();
         Course = course;
-        NavigateToAllClassesCommand = new Command(async () => await NavigateToAllClasses());    
+        NavigateToAllClassesCommand = new Command(async () => await NavigateToAllClasses(Course));    
         BindingContext = this;
     }
 
-    private async Task NavigateToAllClasses()
+    private async Task NavigateToAllClasses(Course course)
     {
-        await Navigation.PushAsync(new AllClassPage());
+        await Navigation.PushAsync(new AllClassPage(course));
     }
 }

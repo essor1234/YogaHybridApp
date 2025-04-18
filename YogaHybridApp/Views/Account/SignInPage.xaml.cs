@@ -1,4 +1,6 @@
 using YogaHybridApp.Database;
+using YogaHybridApp.Views.Class;
+using YogaHybridApp.Views.Courses;
 
 namespace YogaHybridApp.Views.Account;
 
@@ -44,7 +46,7 @@ public partial class SignInPage : ContentPage
         await DisplayAlert("Success", $"Welcome back, {user.Name}!", "OK");
 
         // Navigate to the main app page (replace with your actual main page)
-        await Navigation.PushAsync(new AllClassPage());
+        await Navigation.PushAsync(new AllCoursePage());
     }
 
     private async void OnSignUpTapped(object sender, EventArgs e)

@@ -16,6 +16,43 @@ namespace YogaHybridApp.Database
         {
             _firebaseClient = new FirebaseClient("https://yoloclassmanagement-default-rtdb.firebaseio.com/");
         }
+
+        // Fetch ClassInstance objects by CourseId
+        public async Task<List<ClassInstance>> GetClassInstancesByCourseIdAsync(string courseId)
+        {
+            try
+            {
+                var classInstances = await _firebaseClient
+                    .Child("class_instances")
+                    .OnceAsync<ClassInstance>();
+
+                return classInstances
+                    .Select(item => item.Object)
+                    .Where(ci => ci.CourseId == courseId)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to fetch class instances: {ex.Message}");
+            }
+        }
+
+        // Fetch Teacher by TeacherId
+        public async Task<Teacher> GetTeacherByIdAsync(string teacherId)
+        {
+            try
+            {
+                var teacher = await _firebaseClient
+                    .Child("teachers")
+                    .Child(teacherId)
+                    .OnceSingleAsync<Teacher>();
+                return teacher;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to fetch teacher: {ex.Message}");
+            }
+        }
         public async Task<User> GetUserByEmailAsync(string email)
         {
             try

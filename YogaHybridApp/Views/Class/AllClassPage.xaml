@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="YogaHybridApp.Views.AllClassPage"
-             Title="Teachers">
-	<ListView x:Name="listCourses"
-          SeparatorColor="Gray"
-          Margin="10">
-		<ListView.ItemTemplate>
-			<DataTemplate>
-				<TextCell Text="{Binding Name}" Detail="{Binding Expertise}" />
-			</DataTemplate>
-		</ListView.ItemTemplate>
-	</ListView>
+             x:Class="YogaHybridApp.Views.Class.AllClassPage"
+             Title="Classes for Course">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Available Classes" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#333333" 
+                   Margin="0,10" />
 
+            <CollectionView ItemsSource="{Binding ClassInstances}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                     Span="2" 
+                                     HorizontalItemSpacing="10" 
+                                     VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#E0E0E0" 
+                                StrokeThickness="1" 
+                                StrokeShape="RoundRectangle 10" 
+                                Padding="15" 
+                                BackgroundColor="#F9F9F9">
+                            <VerticalStackLayout Spacing="5">
+                                <!-- Teacher Name as Header -->
+                                <Label Text="{Binding TeacherName}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#333333" 
+                                       HorizontalOptions="Center" />
+                                <!-- Date -->
+                                <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy HH:mm}'}" 
+                                       FontSize="14" 
+                                       TextColor="#555555" 
+                                       HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

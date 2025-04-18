@@ -1,5 +1,7 @@
 ﻿using YogaHybridApp.Views;
 using YogaHybridApp.Views.Account;
+using YogaHybridApp.Views.Class;
+
 
 namespace YogaHybridApp
 {
