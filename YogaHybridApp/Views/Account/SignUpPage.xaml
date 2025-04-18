@@ -3,10 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="YogaHybridApp.Views.Account.SignUpPage"
              Title="SignUpPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label Text="Create an Account" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" />
+
+        <Entry x:Name="NameEntry" Placeholder="Enter your name" Keyboard="Text" />
+        <Entry x:Name="EmailEntry" Placeholder="Enter your email" Keyboard="Email" />
+
+        <Button Text="Sign Up" Clicked="OnSignUpClicked" BackgroundColor="#4CAF50" TextColor="White" />
+        
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Already have an account? " />
+            <Label Text="Sign In" TextColor="Blue" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignInTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

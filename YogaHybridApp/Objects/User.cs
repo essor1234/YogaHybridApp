@@ -8,17 +8,24 @@ namespace YogaHybridApp.Objects
 {
     public class User
     {
-        private string UserId { get; set; }
-        private string Name { get; set; }
-        private string Email { get; set; }
-		private string[] ClassesId { get; set; }
+        public string UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+		public string[] ClassesId { get; set; }
+
+
+        public User()
+        {
+            ClassesId = new string[] { }; // Ensure non-null array for Firebase
+        }
 
         public User(string userId, string name, string email, string[] classesId)
         {
             UserId = userId;
             Name = name;
             Email = email;
-            ClassesId = classesId;
+            ClassesId = classesId ?? new string[] { };
+
         }
 
         public Boolean AddClass(string classId) {

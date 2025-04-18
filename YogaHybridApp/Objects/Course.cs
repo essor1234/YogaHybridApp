@@ -8,17 +8,17 @@ namespace YogaHybridApp.Objects
 {
     public class Course
     {
-        private  string CourseId { get; set; }
-        private string Time { get; set; }
-        private string DayOfWeek { get; set; }
-		private int Capacity { get; set; }
-		private int Duration { get; set; }
-		private int Price { get; set; }
-		private string Category { get; set; }
-		private string Level { get; set; }
-		private string Location { get; set; }
-		private string Deadline { get; set; }
-		private string Description { get; set; }
+        public  string CourseId { get; set; }
+        public string Time { get; set; }
+        public string DayOfWeek { get; set; }
+		public int Capacity { get; set; }
+		public int Duration { get; set; }
+		public int Price { get; set; }
+		public string Category { get; set; }
+		public string Level { get; set; }
+		public string Location { get; set; }
+		public string Deadline { get; set; }
+		public string Description { get; set; }
 
 		public Course(string courseId, string time, string dayOfWeek,
 				int capacity, int duration, int price, string category, string level,
@@ -36,6 +36,8 @@ namespace YogaHybridApp.Objects
 			Description = description;
 		
 		}
+
+		public Course() { }
 
 
 	}

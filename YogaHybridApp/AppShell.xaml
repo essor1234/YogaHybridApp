@@ -10,9 +10,9 @@
     Shell.FlyoutBehavior="Flyout"
     Title="YogaHybridApp">
 
-    <ShellContent
+     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate views:AllClassPage}"
-        Route="AllClassPage" />
+        ContentTemplate="{DataTemplate account:SignUpPage}"
+        Route="SignUpPage" />
 
 </Shell>

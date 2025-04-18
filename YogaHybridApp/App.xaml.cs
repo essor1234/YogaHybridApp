@@ -1,4 +1,6 @@
 ﻿using YogaHybridApp.Views;
+using YogaHybridApp.Views.Account;
+using YogaHybridApp.Views.Courses;
 
 namespace YogaHybridApp
 {
@@ -8,7 +10,9 @@ namespace YogaHybridApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new AllClassPage());
+            //MainPage = new NavigationPage(new AllClassPage());
+            MainPage = new NavigationPage(new AllCoursePage());
+
 
         }
 

@@ -8,11 +8,11 @@ namespace YogaHybridApp.Objects
 {
     public class ClassInstance
     {
-        private string ClassInstanceId { get; set; }
-        private string CourseId { get; set; }
-        private DateTime Date { get; set; }
-        private string TeacherId { get; set; }
-        private string Comment {get; set; }
+        public string ClassInstanceId { get; set; }
+        public string CourseId { get; set; }
+        public DateTime Date { get; set; }
+        public string TeacherId { get; set; }
+        public string Comment {get; set; }
 
         public ClassInstance(string classInstanceId, string courseId, DateTime date, string teacherId, string comment)
         {

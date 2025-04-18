@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YogaHybridApp.Views.Courses.AllCoursePage"
+             Title="All Courses">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label Text="Available Courses" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <CollectionView x:Name="CoursesCollection" ItemsSource="{Binding Courses}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="#E0E0E0" CornerRadius="10" Padding="15" Margin="0,5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!-- Category as h1 -->
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Category}" FontSize="20" FontAttributes="Bold" />
+                            <!-- Deadline below Category -->
+                            <Label Grid.Column="0" Grid.Row="1" Text="{Binding Deadline, StringFormat='Deadline: {0}'}" FontSize="14" TextColor="Gray" />
+                            <!-- Capacity top-right -->
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Capacity, StringFormat='Capacity: {0}'}" FontSize="14" TextColor="Gray" HorizontalOptions="End" />
+                            <!-- Level below Capacity -->
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Level}" FontSize="14" TextColor="Gray" HorizontalOptions="End" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding BindingContext.NavigateToDetailCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

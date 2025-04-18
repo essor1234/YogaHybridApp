@@ -16,6 +16,7 @@ public partial class AllClassPage : ContentPage
 		InitializeComponent();
         //database.LoadTeachersAsync();
         database = new DatabaseConnect();
+
         LoadTeachers();
 
 
