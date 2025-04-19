@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YogaHybridApp.Views.Class.SearchClassPage"
+             Title="Search Classes">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Title -->
+            <Label Text="Find Your Class Here" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#333333" 
+                   Margin="0,10" />
+
+            <!-- Date Picker -->
+            <Label Text="Select Date to Filter" 
+                   FontSize="16" 
+                   TextColor="#555555" />
+            <DatePicker Date="{Binding SelectedDate, Mode=TwoWay}" 
+                        MinimumDate="2023-01-01" 
+                        MaximumDate="2025-12-31" 
+                        HorizontalOptions="Fill" 
+                        IsEnabled="{Binding IsDatePickerEnabled}" />
+
+            <!-- CollectionView for Classes -->
+            <CollectionView ItemsSource="{Binding FilteredClassInstances}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                     Span="2" 
+                                     HorizontalItemSpacing="10" 
+                                     VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#E0E0E0" 
+                                StrokeThickness="1" 
+                                StrokeShape="RoundRectangle 10" 
+                                Padding="15" 
+                                BackgroundColor="#F9F9F9">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToClassDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                                     CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding TeacherName}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#333333" 
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy HH:mm}'}" 
+                                       FontSize="14" 
+                                       TextColor="#555555" 
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding Comment, StringFormat='Comment: {0}', FallbackValue='Comment: None'}" 
+                                       FontSize="14" 
+                                       TextColor="#555555" 
+                                       HorizontalOptions="Center" 
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

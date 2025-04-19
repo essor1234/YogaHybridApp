@@ -37,6 +37,21 @@ namespace YogaHybridApp.Database
             }
         }
 
+        public async Task<List<ClassInstance>> GetAllClassInstancesAsync()
+        {
+            try
+            {
+                var classInstances = await _firebaseClient
+                    .Child("class_instances")
+                    .OnceAsync<ClassInstance>();
+                return classInstances.Select(item => item.Object).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to fetch all class instances: {ex.Message}");
+            }
+        }
+
 
         // Fetch User by UserId (new)
         public async Task<User> GetUserByIdAsync(string userId)

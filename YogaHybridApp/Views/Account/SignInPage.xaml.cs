@@ -42,7 +42,7 @@ public partial class SignInPage : ContentPage
         Preferences.Set("CurrentUserName", user.Name);
 
         await DisplayAlert("Success", $"Welcome back, {user.Name}!", "OK");
-        await Navigation.PushAsync(new AllCoursePage());
+        await Navigation.PushAsync(new MainPage());
     }
 
     private async void OnSignUpTapped(object sender, EventArgs e)
