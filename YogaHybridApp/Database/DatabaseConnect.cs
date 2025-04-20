@@ -222,41 +222,41 @@ namespace YogaHybridApp.Database
             }
         }
 
-        public async Task<ClassInstance[]> GetClassInstancesByCourseAsync(string courseId)
-        {
-            try
-            {
-                var classInstances = await _firebaseClient
-                    .Child("class_instances") // Standardized to class_instances
-                    .OnceAsync<ClassInstance>();
-                var filteredList = classInstances
-                    .Select(ci => ci.Object)
-                    .Where(ci => ci.CourseId == courseId)
-                    .ToList();
-                return filteredList.ToArray();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error fetching class instances: {ex.Message}");
-                return Array.Empty<ClassInstance>();
-            }
-        }
+        //public async Task<ClassInstance[]> GetClassInstancesByCourseAsync(string courseId)
+        //{
+        //    try
+        //    {
+        //        var classInstances = await _firebaseClient
+        //            .Child("class_instances") // Standardized to class_instances
+        //            .OnceAsync<ClassInstance>();
+        //        var filteredList = classInstances
+        //            .Select(ci => ci.Object)
+        //            .Where(ci => ci.CourseId == courseId)
+        //            .ToList();
+        //        return filteredList.ToArray();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"Error fetching class instances: {ex.Message}");
+        //        return Array.Empty<ClassInstance>();
+        //    }
+        //}
 
-        public async Task<Teacher[]> LoadTeachersAsync()
-        {
-            try
-            {
-                var teachers = await _firebaseClient
-                    .Child("teachers")
-                    .OnceAsync<Teacher>();
-                var teacherList = teachers.Select(t => t.Object).ToList();
-                return teacherList.ToArray();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error fetching teachers: {ex.Message}");
-                return Array.Empty<Teacher>();
-            }
-        }
+        //public async Task<Teacher[]> LoadTeachersAsync()
+        //{
+        //    try
+        //    {
+        //        var teachers = await _firebaseClient
+        //            .Child("teachers")
+        //            .OnceAsync<Teacher>();
+        //        var teacherList = teachers.Select(t => t.Object).ToList();
+        //        return teacherList.ToArray();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"Error fetching teachers: {ex.Message}");
+        //        return Array.Empty<Teacher>();
+        //    }
+        //}
     }
 }
