@@ -42,7 +42,7 @@ public partial class ShoppingCartPage : ContentPage
                 return;
             }
 
-            else if (dbUser.AddClass(ClassInstance.ClassInstanceId))
+            if (dbUser.AddClass(ClassInstance.ClassInstanceId))
             {
                 await _database.UpdateUserClassesAsync(dbUser.UserId, dbUser.ClassesId);
                 await DisplayAlert("Success", "Payment Success!", "OK");

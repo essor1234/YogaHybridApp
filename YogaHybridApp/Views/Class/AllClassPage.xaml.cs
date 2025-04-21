@@ -83,13 +83,5 @@ public partial class AllClassPage : ContentPage
         await Navigation.PushAsync(new ClassDetailsPage(viewModel));
     }
 }
-public class ClassInstanceViewModel
-{
-    public string ClassInstanceId { get; set; }
-    public string CourseId { get; set; }
-    public DateTime Date { get; set; }
-    public string TeacherName { get; set; }
-    public string Comment { get; set; }
-    public Teacher Teacher { get; set; } // Added to store full teacher details
-    public Course Course { get; set; }
-}
+
+
